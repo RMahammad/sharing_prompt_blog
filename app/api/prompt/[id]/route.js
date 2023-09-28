@@ -2,7 +2,7 @@ import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
 
 // Get route
-export const GET = async (req, { params }) => {
+export const GET = async (request, { params }) => {
   try {
     await connectToDB();
     const prompt = await Prompt.findById(params.id).populate("creator");
@@ -14,7 +14,7 @@ export const GET = async (req, { params }) => {
 };
 
 // Patch route
-export const PATCH = async (req, { params }) => {
+export const PATCH = async (request, { params }) => {
   const { prompt, tag } = await request.json();
   try {
     await connectToDB();
@@ -33,7 +33,7 @@ export const PATCH = async (req, { params }) => {
 };
 
 // Delete route
-export const DELETE = async (req, { params }) => {
+export const DELETE = async (request, { params }) => {
   try {
     await connectToDB();
 
